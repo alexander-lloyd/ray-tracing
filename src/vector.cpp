@@ -1,21 +1,8 @@
-#include <cstdlib>
-#include <cstdio>
+#ifndef vector_cpp
+#define vector_cpp
+
 #include <cmath>
-#include <fstream>
-#include <vector>
 #include <iostream>
-#include <cassert>
-
-#if defined __linux__ || defined __APPLE__
-
-// Compiled for Linux
-
-#else
-
-#define M_PI 3.141592653589793
-#define INFINITY 1e8
-
-#endif
 
 template<typename T>
 class Vec3 {
@@ -93,3 +80,4 @@ class Vec3 {
 
 typedef Vec3<float> Vec3f;
 
+#endif

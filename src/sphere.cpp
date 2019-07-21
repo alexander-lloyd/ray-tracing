@@ -3,6 +3,9 @@
  * @file        : sphere
  * @created     : Thursday Jun 27, 2019 11:27:26 BST
  */
+#ifndef sphere_cpp
+#define sphere_cpp
+
 #include <cmath>
 
 #include "vector.cpp"
@@ -49,3 +52,5 @@ class Sphere {
 			return true;
 		}
 };
+
+#endif

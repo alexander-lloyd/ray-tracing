@@ -1,4 +1,7 @@
-#include "src/vector.cpp"
+#ifndef main_cpp
+#define main_cpp
+
+#include "vector.cpp"
 
 int main(int argc, char **argv) {
 	Vec3f vec = Vec3f(1,2,3);
@@ -8,3 +11,4 @@ int main(int argc, char **argv) {
 	std::cout << vec.length() << std::endl;
 }
 
+#endif

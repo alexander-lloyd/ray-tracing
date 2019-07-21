@@ -1,8 +1,11 @@
 #### PROJECT SETTINGS ####
+
+PROJECT_OBJECT_FLAGS := -D MAX_RAY_DEPTH=5
+
 # The name of the executable to be created
 BIN_NAME := raytracer
 # Compiler used
-CXX ?= g++
+CXX ?= c++
 # Extension of source files used in the project
 SRC_EXT = cpp
 # Path to the source directory, relative to the makefile
@@ -60,7 +63,7 @@ ifneq ($(LIBS),)
 endif
 
 # Verbose option, to output compile and link commands
-export V := false
+export V := true
 export CMD_PREFIX := @
 ifeq ($(V),true)
 	CMD_PREFIX :=
@@ -121,7 +124,7 @@ endif
 
 # Version macros
 # Comment/remove this section to remove versioning
-USE_VERSION := false
+USE_VERSION := true
 # If this isn't a git repo or the repo has no tags, git describe will return non-zero
 ifeq ($(shell git describe > /dev/null 2>&1 ; echo $$?), 0)
 	USE_VERSION := true
@@ -139,7 +142,8 @@ ifeq ($(shell git describe > /dev/null 2>&1 ; echo $$?), 0)
 		-D VERSION_MINOR=$(VERSION_MINOR) \
 		-D VERSION_PATCH=$(VERSION_PATCH) \
 		-D VERSION_REVISION=$(VERSION_REVISION) \
-		-D VERSION_HASH=\"$(VERSION_HASH)\"
+		-D VERSION_HASH=\"$(VERSION_HASH)\
+	  -D MAX_RAY_DEPTH=5 \"
 endif
 
 # Standard, non-optimized release build
@@ -206,7 +210,7 @@ all: $(BIN_PATH)/$(BIN_NAME)
 $(BIN_PATH)/$(BIN_NAME): $(OBJECTS)
 	@echo "Linking: $@"
 	@$(START_TIME)
-	$(CMD_PREFIX)$(CXX) $(OBJECTS) $(LDFLAGS) -o $@
+	$(CMD_PREFIX)$(CXX) $(PROJECT_OBJECT_FLAGS) $(OBJECTS) $(LDFLAGS) -o $@
 	@echo -en "\t Link time: "
 	@$(END_TIME)
 
