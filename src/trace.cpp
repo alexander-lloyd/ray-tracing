@@ -11,6 +11,10 @@
 #include "vector.cpp"
 #include "sphere.cpp"
 
+#ifndef MAX_RAY_DEPTH
+#define MAX_RAY_DEPTH 1
+#endif
+
 #if defined __linux__ || defined __APPLE__
 // Compiled for Linux
 #else
